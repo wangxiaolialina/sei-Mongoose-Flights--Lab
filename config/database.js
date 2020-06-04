@@ -2,15 +2,25 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Flight = new Schema({
     airline: {
-        type:String
+        type:String,
+        enum:['American','Southwest','United'],
     }
     airport: {
-        type:String
+        type:String,
+        enum:['AUS','DFW','DEN','LAX','SAN'],
+        default:"DEN"
     }
     flightNo: {
-        type:Number
+        type:Number,
+        required:true,
+        min:10,
+        max:9999
     }
     departs: {
-        type:Date
+        type:Date,
+        dafault:function(){
+            return new Date().getFullYear();    
+        }
+        
     }
 })
