@@ -1,26 +1,14 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-const Flight = new Schema({
-    airline: {
-        type:String,
-        enum:['American','Southwest','United'],
-    }
-    airport: {
-        type:String,
-        enum:['AUS','DFW','DEN','LAX','SAN'],
-        default:"DEN"
-    }
-    flightNo: {
-        type:Number,
-        required:true,
-        min:10,
-        max:9999
-    }
-    departs: {
-        type:Date,
-        dafault:function(){
-            return new Date().getFullYear();    
-        }
-        
-    }
-})
+
+mongoose.connect('mongodb://localhost/flights', {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true
+});
+
+// shortcut to mongoose.connection object
+const db = mongoose.connection;
+
+db.on('connected', function () {
+  console.log(`Connected to MongoDB at ${db.host}:${db.port}`);
+});
