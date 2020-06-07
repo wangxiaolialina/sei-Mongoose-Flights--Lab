@@ -2,7 +2,11 @@
 
 <form id="new-form" action="/flights" method="POST">
   <label>Airline</label>
-  <input type="text" name="airline">
+  <select name="airline">
+    <option value="American">American</option>
+    <option value="Southwest">Southwest</option>
+    <option value="United">United</option>
+</select>
   <label>Airport</label>
   <select name="airport">
     <option value="AUS">AUS</option>
@@ -14,8 +18,7 @@
   <label>Flight<br></br>No</label>
   <input type="number" name="flightNo">
   <label for="Departure-time">Choose a time for your Departure:</label>
-  <input type="datetime-local" id="departs"
-  name="departs" value="2018-06-12T19:30"
+  <input type="datetime-local" name="departs" value="2018-06-12T19:30"
   min="2018-06-07T00:00" max="2018-06-14T00:00">
   <input type="submit" value="Add Flight">
 </form>
