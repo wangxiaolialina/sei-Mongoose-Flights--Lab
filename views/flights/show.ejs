@@ -9,7 +9,15 @@
   <div><%= flight.flightNo %></div>
   <div>Departure Time:</div>
   <div><%= flight.departs %></div>
+  <div>Tickets:</div>
+  <ul>
+    <%- tickets.map(ticket => 
+      `<li>${ticket.seat} <small>${ticket.price}</small></li>`
+    ).join('') %>
+  </ul>
 </section>
+
+<a href="/flights/<%= flight._id%>/tickets/new">Create Ticket</a>
 
 <br><br><h2>Destination</h2>
 <form id="add-destination-form" method="POST"
@@ -25,8 +33,9 @@
 <label for="arrival">Choose a time for your arrival:</label>
 <input type="datetime-local" name="arrival" value="2020-06-04T19:30"
 min="2020-06-04T00:00" max="2020-06-20T00:00">
-  <input type="submit" value="Add Review">
+  <input type="submit" value="Add Destination">
 </form>
+
 
 <% if (flight.destinations.length) { %>
   <table>
