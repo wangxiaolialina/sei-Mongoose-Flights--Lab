@@ -13,7 +13,7 @@
 
 <br><br><h2>Destination</h2>
 <form id="add-destination-form" method="POST"
-  action="/flights/<%= flight._id %>/destination">
+  action="/flights/<%= flight._id %>/destinations">
   <label>Airport</label>
   <select name="airport">
     <option value="AUS">AUS</option>
@@ -40,7 +40,7 @@ min="2020-06-04T00:00" max="2020-06-20T00:00">
       <% flight.destinations.forEach(function(f) { %>
         <tr>
           <td><%= f.airport %></td>
-          <td><%= r.arrival %></td>
+          <td><%= f.arrival %></td>
         </tr>
       <% }); %>
     </tbody>
